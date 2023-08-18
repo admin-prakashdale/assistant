@@ -57,14 +57,14 @@ public partial class HomePageViewModel : BaseViewModel
         {
             IsBusy = true;
             IsRefreshing = true;
-            //var data = await this.conversationService.GetConversationsAsync();
+            var data = await this.conversationService.GetConversationsAsync();
 
-            //if (data == null) return;
-            //this.Conversations.Clear();
-            //foreach (var conversation in data)
-            //{
-            //    this.Conversations.Add(conversation);
-            //}
+            if (data == null) return;
+            this.Conversations.Clear();
+            foreach (var conversation in data)
+            {
+                this.Conversations.Add(conversation);
+            }
 
             if (this.Conversations.Count() == 0)
             {
