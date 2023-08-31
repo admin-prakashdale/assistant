@@ -11,6 +11,6 @@ services:
       context: .
       dockerfile: src/chathub/Dockerfile
     ports:
-      - 80:80
+      - 5112:5112
 
 
