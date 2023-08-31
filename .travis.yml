@@ -7,6 +7,7 @@ services:
 before_install:
   - docker build -t adminprakashdale/chathub -f ./src/chathub/Dockerfile .
 
+# aws deployment settings.
 deploy:
   provider: elasticbeanstalk
   region: "eu-north-1"
