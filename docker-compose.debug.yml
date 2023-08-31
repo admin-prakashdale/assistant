@@ -1,0 +1,27 @@
+version: '3.4'
+
+services:
+  backoffice:
+    image: backoffice
+    build:
+      context: backoffice
+      dockerfile: ./Dockerfile
+    environment:
+      NODE_ENV: development
+    ports:
+      - 3000:3000
+      - 9229:9229
+    command: ["node", "--inspect=0.0.0.0:9229", "index.js"]
+  chathub:
+    image: chathub
+    build:
+      context: .
+      dockerfile: chathub/Dockerfile
+      args:
+        - configuration=Debug
+    ports:
+      - 5112:5112
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    volumes:
+      - ~/.vsdbg:/remote_debugger:rw

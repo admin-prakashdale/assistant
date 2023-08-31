@@ -1,8 +1,19 @@
-version: "3"
+version: '3.4'
+
 services:
-  web:
+  backoffice:
+    image: backoffice
+    build:
+      context: backoffice
+      dockerfile: ./Dockerfile
+    environment:
+      NODE_ENV: production
+    ports:
+      - 3000:3000
+  chathub:
+    image: chathub
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: ./chathub/Dockerfile
     ports:
-      - "80:80"
+      - 5112:5112
