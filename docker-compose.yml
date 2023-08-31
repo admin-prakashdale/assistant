@@ -1,0 +1,16 @@
+# Please refer https://aka.ms/HTTPSinContainer on how to setup an https developer certificate for your ASP.NET Core service.
+
+version: '3.4'
+
+services:
+  redis-server:
+    image: redis/redis-stack
+  chathub:
+    image: chathub
+    build:
+      context: .
+      dockerfile: src/chathub/Dockerfile
+    ports:
+      - 5112:5112
+
+
